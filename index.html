@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>武汉音乐学院</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+<div id="app">
+    <div class="block">
+<!--        <p>-->
+<!--            <el-button type="success" size="mini" v-on:click="changeExpand(true)">全部展开</el-button>-->
+<!--            <el-button type="danger" size="mini" @click="changeExpand(false)">全部收起</el-button>-->
+<!--        </p>-->
+        <el-tree
+                :data="tree"
+                node-key="id"
+                :default-expand-all="isExpand"
+                :expand-on-click-node="false">
+      <span class="custom-tree-node" slot-scope="{ node, data }">
+        <span>{{ node.label }}</span>
+        <span>
+            <el-button type="success" icon="el-icon-plus" size="mini" circle></el-button>
+<!--            <el-button type="danger" icon="el-icon-delete" size="mini" circle></el-button>-->
+        </span>
+      </span>
+        </el-tree>
+    </div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            isExpand: false,
+            activeName: 1,
+            tree: [{
+                id: 1,
+                label: '一级 1',
+                children: [{
+                    id: 4,
+                    label: '二级 1-1',
+                    children: [{
+                        id: 9,
+                        label: '三级 1-1-1'
+                    }, {
+                        id: 10,
+                        label: '三级 1-1-2'
+                    }]
+                }]
+            }, {
+                id: 2,
+                label: '一级 2',
+                children: [{
+                    id: 5,
+                    label: '二级 2-1'
+                }, {
+                    id: 6,
+                    label: '二级 2-2'
+                }]
+            }, {
+                id: 3,
+                label: '一级 3',
+                children: [{
+                    id: 7,
+                    label: '二级 3-1'
+                }, {
+                    id: 8,
+                    label: '二级 3-2'
+                }]
+            }]
+        },
+        methods: {
+            changeExpand(e) {
+                console.log(123)
+                this.isExpand = e
+            }
+        }
+        ,
+        mounted() {
+            console.log(123)
+        }
+    })
+</script>
+</body>
+</html>
